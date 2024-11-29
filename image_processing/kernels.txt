@@ -1,0 +1,47 @@
+########## LAYER ONE KERNELS #############
+
+horizontal_edge = [[-1,-1,-1],
+                   [0,0,0],
+                   [1,1,1]]
+               
+vertical_edge = [[-1,0,1],
+                 [-1,0,1],
+                 [-1,0,1]]
+
+sharpening = [[0,-1,0],
+              [-1,5,-1],
+              [0,-1,0]]
+
+weighted_averaging_3x3 = (1/16)*[[1, 2, 1],
+                        [2, 4, 2],
+                        [1, 2, 1]]        
+
+
+############## LAYER TWO KERNELS ###########
+
+robert_x = [[1, 0],
+            [0, -1]]    
+
+robert_y = [[0, +1],
+            [-1, 0]] 
+
+averaging_2x2 = (1/4)*[[1, 1],
+                       [1, 1]]
+
+############### CNN FEED FORWARD ####################
+
+###### cat function in MATLAB and np.concatenate (python) could be used in order to build tensors of kernels
+
+l1_filters = ... ### concatenating horizontal_edge, vertical_edge, sharpening, ...  along the 3rd axis
+l2_filters = ... ### concatenating robert_x, robert_y, averaging_2x2 along the 3rd axis
+
+#### this section computes the convolutions for a two layer CNN with the given kernels %%%%%
+##### layer 1: padding is same, stride is 1
+
+layer_one_output = conv2D(img, l1_filters, stride=1, padding='same')
+layer_two_output = conv2D(layer_one_output, l2_filters, stride=2, padding='valid')
+
+
+#### plot images in each feature map (layer_one_output, layer_two_output) using subplot
+### for example: if there are 4 images in the feature map (as many as kernels applied) 
+### there should be 5 images in the subplot (original + each image)
