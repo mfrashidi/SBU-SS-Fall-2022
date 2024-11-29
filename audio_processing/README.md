@@ -59,11 +59,6 @@ The script produces the following results:
   - Spectrograms of the original and filtered audio signals.
   - Fourier Transform (frequency spectrum) of the original and filtered audio signals.
 
-
-  This is the result of applying the filters:
-  
-![Diagrams](Diagrams.png)
-
 ## Key MATLAB Functions Used
 
 - `audioread`: To load the input audio file.
@@ -90,10 +85,10 @@ The script organizes visualizations into a `3x3` grid of subplots:
 - The low-pass filter retains frequencies below `1800 Hz`, removing high-frequency noise.
 - The high-pass filter retains frequencies above `1000 Hz`, isolating higher-frequency components.
 - Spectrograms effectively visualize the changes in frequency content over time, demonstrating the impact of filtering.
+  
+![Diagrams](Diagrams.png)
 
 ## How to Run
 
 1. Run `audio.m` script.
 2. The filtered audio files will be saved in the working directory, and visualizations will be displayed.
-
-Explore the `audio_processing/` directory for the MATLAB script and example outputs.
